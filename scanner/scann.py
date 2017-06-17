@@ -1,9 +1,10 @@
+#!//home/mikepartain/GIT/python/bin/python
+
 #!/Users/mikepartain/git/python/bin/python
 from scapy.all import *
 from netaddr import *
 import sys
 from datetime import datetime
-conf.verb = 0
 
 def main():
     try:
@@ -26,7 +27,7 @@ def main():
 def scan(network):
     starttime = datetime.now()
     print 'Starting scan at: ', starttime
-
+    conf.verb = 0
     for ip in IPNetwork(network).iter_hosts():
         packet = IP(dst=ip, ttl=20) / ICMP()
         reply = sr1(packet)
